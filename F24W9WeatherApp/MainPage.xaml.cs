@@ -18,8 +18,8 @@
             var myWeather = await WeatherProxy.GetWeatherAsync(url);
 
             CityLbl.Text = myWeather.name;
-            TemperatureLbl.Text = myWeather.main.temp.ToString();
-            ConditionsLbl.Text = myWeather.weather[0].description;
+            TemperatureLbl.Text = myWeather.main.temp.ToString("F0") + "\u00B0C";
+            ConditionsLbl.Text = myWeather.weather[0].description.ToUpper();
         }
     }
 
