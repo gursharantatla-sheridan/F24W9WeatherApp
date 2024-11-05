@@ -5,6 +5,9 @@
         public MainPage()
         {
             InitializeComponent();
+
+            if (DeviceInfo.Platform == DevicePlatform.Android)
+                stack.Background = Brush.MediumPurple;
         }
 
         private async void OnGetWeatherBtnClicked(object sender, EventArgs e)
@@ -20,6 +23,10 @@
             CityLbl.Text = myWeather.name;
             TemperatureLbl.Text = myWeather.main.temp.ToString("F0") + "\u00B0C";
             ConditionsLbl.Text = myWeather.weather[0].description.ToUpper();
+
+            string iconCode = myWeather.weather[0].icon;
+            string iconUrl = $"https://openweathermap.org/img/wn/{iconCode}@2x.png";
+            WeatherImg.Source = ImageSource.FromUri(new Uri(iconUrl));
         }
     }
 
